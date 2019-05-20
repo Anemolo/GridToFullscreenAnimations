@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Grid to Fullscreen Animations | Codrops</title>
+	<meta name="description" content="A set of thumbnail to fullscreen animations for image grids powered by Three.js" />
+	<meta name="keywords" content="image grid, animation, fullscreen, webgl, three.js, web design" />
+	<meta name="author" content="Codrops" />
+	<link rel="shortcut icon" href="favicon.ico" />
+	<link rel="stylesheet" href="https://use.typekit.net/ujk6ksk.css" />
+	<link rel="stylesheet" type="text/css" href="css/base.css" />
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<script>
+	document.documentElement.className = "js";
+	var supportsCssVars = function() {
+		var e,
+			t = document.createElement("style");
+		return (
+			(t.innerHTML = "root: { --tmp-var: bold; }"),
+			document.head.appendChild(t),
+			(e = !!(
+				window.CSS &&
+				window.CSS.supports &&
+				window.CSS.supports("font-weight", "var(--tmp-var)")
+			)),
+			t.parentNode.removeChild(t),
+			e
+		);
+	};
+	supportsCssVars() ||
+		alert(
+			"Please view this demo in a modern browser that supports CSS Variables."
+		);
+	</script>
+	<!--script src="//tympanus.net/codrops/adpacks/analytics.js"></script-->
+</head>
+
+<body class="loading">
+	<main>
+		<div class="frame">
+			<div class="frame__title-wrap">
+				<h1 class="frame__title">Grid to Fullscreen Animations</h1>
+				<div class="frame__links">
+					<a href="">Previous Demo</a>
+					<a href="">Article</a>
+					<a href="">GitHub</a>
+				</div>
+			</div>
+			<div class="frame__demos">
+				<span class="frame__demos-title">examples:</span>
+				<a href="index.html" class="frame__demo">01</a>
+				<a href="index2.html" class="frame__demo">02</a>
+				<a href="index3.html" class="frame__demo">03</a>
+				<a href="index4.html" class="frame__demo frame__demo--current">04</a>
+				<a href="index5.html" class="frame__demo">05</a>
+				<a href="index6.html" class="frame__demo">06</a>
+			</div>
+		</div>
+		<!-- /frame -->
+		<div class="deco">
+			<div class="deco__text">Interface 2019</div>
+			<div class="deco__text">Interface 2019</div>
+			<div class="deco__text">Interface 2019</div>
+			<div class="deco__text">Interface 2019</div>
+			<div class="deco__text">Interface 2019</div>
+		</div>
+		<div id="app"></div>
+		<div class="grid" id="itemsWrapper">
+			<figure class="grid__item">
+				<img class="grid__item-img" src="img/thumbs/1.jpg" alt="A picture of Montparnasse in Paris" />
+				<img class="grid__item-img grid__item-img--large" src="img/large/1.jpg" />
+				<figcaption class="grid__item-caption">
+					<h2 class="grid__item-title">Paris</h2>
+					<p class="grid__item-text">
+						If you are lucky enough to have lived in Paris as a young man,
+						then wherever you go for the rest of your life it stays with you,
+						for Paris is a moveable feast.
+					</p>
+				</figcaption>
+			</figure>
+			<figure class="grid__item">
+				<img class="grid__item-img" src="img/thumbs/2.jpg" alt="A picture of a street in Barcelona" />
+				<img class="grid__item-img grid__item-img--large" src="img/large/2.jpg" />
+				<figcaption class="grid__item-caption">
+					<h2 class="grid__item-title">Barcelona</h2>
+					<p class="grid__item-text">
+						We crossed spacious streets, with building resembling palaces, in
+						La Rambla promenade; the shops were well illuminated and there was
+						movement and life.
+					</p>
+				</figcaption>
+			</figure>
+			<figure class="grid__item">
+				<img class="grid__item-img" src="img/thumbs/3.jpg" alt="A picture of a street in Rome" />
+				<img class="grid__item-img grid__item-img--large" src="img/large/3.jpg" />
+				<figcaption class="grid__item-caption">
+					<h2 class="grid__item-title">Rome</h2>
+					<p class="grid__item-text">
+						And that is… how they are. So terribly physically all over one
+						another. They pour themselves one over the other like so much
+						melted butter over parsnips.
+					</p>
+				</figcaption>
+			</figure>
+		</div>
+		<div class="fullview">
+			<div class="fullview__item">
+				<h2 class="fullview__item-title">Paris</h2>
+			</div>
+			<div class="fullview__item">
+				<h2 class="fullview__item-title">Barcelona</h2>
+			</div>
+			<div class="fullview__item">
+				<h2 class="fullview__item-title">Rome</h2>
+			</div>
+			<button class="fullview__close" aria-label="Close preview"><svg aria-hidden="true" width="32" height="50px" viewBox="0 0 43 28">
+					<path d="M15.379 2.236L13.965.822.787 14l13.178 13.178 1.414-1.414-10.703-10.8h37.573v-1.928l-37.573-.097z">
+				</svg></button>
+		</div>
+	</main>
+	<script src="js/imagesloaded.pkgd.min.js"></script>
+	<script src="js/three.min.js"></script>
+	<script src="js/TweenLite.min.js"></script>
+	<script src="js/CSSPlugin.min.js"></script>
+	<script src="js/EasePack.min.js"></script>
+	<script src="js/GridToFullscreenEffect.js"></script>
+	<script src="js/basicDemo.js"></script>
+	<script>
+	let currentIndex;
+	const itemsWrapper = document.getElementById("itemsWrapper");
+	const thumbs = [...itemsWrapper.querySelectorAll("img.grid__item-img:not(.grid__item-img--large)")];
+	const fullviewItems = [...document.querySelectorAll(".fullview__item")];
+	const backToGridCtrl = document.querySelector(".fullview__close");
+	const transitionEffectDuration = 1.3;
+
+	const transitionEffect = createDemoEffect({
+		activation: { type: "mouse" },
+		timing: {
+			duration: transitionEffectDuration
+		},
+		transformation: {
+			type: "simplex",
+			props: {
+				seed: "8000",
+				frequencyX: 0.2,
+				frequencyY: 0.2,
+				amplitudeX: 0.3,
+				amplitudeY: 0.3
+			}
+		},
+		onToFullscreenStart: ({ index }) => {
+			currentIndex = index;
+			thumbs[currentIndex].style.opacity = 0;
+			transitionEffect.uniforms.uSeed.value = index * 10;
+			toggleFullview();
+		},
+		onToGridFinish: ({ index, lastIndex }) => {
+			thumbs[lastIndex].style.opacity = 1;
+			fullviewItems[currentIndex].classList.remove("fullview__item--current");
+		},
+		seed: 800,
+		easings: {
+			toFullscreen: Power1.easeOut,
+			toGrid: Power1.easeOut
+		}
+	});
+	transitionEffect.init();
+
+	const toggleFullview = () => {
+		if (transitionEffect.isFullscreen) {
+			TweenLite.to(fullviewItems[currentIndex].querySelector(".fullview__item-title"), 0.2, {
+				ease: Quad.easeOut,
+				opacity: 0,
+				x: "5%"
+			});
+			TweenLite.to(backToGridCtrl, 0.2, {
+				ease: Quad.easeOut,
+				opacity: 0,
+				x: "100%"
+			});
+
+			transitionEffect.toGrid();
+		} else {
+			fullviewItems[currentIndex].classList.add("fullview__item--current");
+
+			TweenLite.to(fullviewItems[currentIndex].querySelector(".fullview__item-title"), 1, {
+				ease: Expo.easeOut,
+				startAt: { x: "5%" },
+				opacity: 1,
+				x: "0%",
+				delay: transitionEffectDuration * 0.7
+			});
+			TweenLite.to(backToGridCtrl, 1, {
+				ease: Expo.easeOut,
+				startAt: { x: "100%" },
+				opacity: 1,
+				x: "0%",
+				delay: transitionEffectDuration * 0.6
+			});
+		}
+	};
+
+	backToGridCtrl.addEventListener("click", () => {
+		if (transitionEffect.isAnimating) {
+			return;
+		}
+		toggleFullview();
+	});
+
+	// Preload all the images in the page
+	imagesLoaded(document.querySelectorAll("img"), instance => {
+		//https://www.techrepublic.com/article/preloading-and-the-javascript-image-object/
+		document.body.classList.remove("loading");
+
+		// Make Images sets for the transition effect
+		let images = [];
+		for (var i = 0, imageSet = {}; i < instance.elements.length; i++) {
+			let image = {
+				element: instance.elements[i],
+				image: instance.images[i].isLoaded ? instance.images[i].img : null
+			};
+			if (i % 2 === 0) {
+				imageSet = {};
+				imageSet.small = image;
+			}
+
+			if (i % 2 === 1) {
+				imageSet.large = image;
+				images.push(imageSet);
+			}
+		}
+		transitionEffect.createTextures(images);
+	});
+	</script>
+</body>
+
+</html>
