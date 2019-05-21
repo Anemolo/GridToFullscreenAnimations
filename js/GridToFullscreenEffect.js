@@ -87,6 +87,26 @@ class GridToFullscreenEffect {
     this.currentImageIndex = -1;
     this.isFullscreen = false;
     this.isAnimating = false;
+
+    this.onResize = this.onResize = this.onResize.bind(this);
+  }
+  resetUniforms() {
+    this.uniforms.uMeshScale.value = new THREE.Vector2(1, 1);
+    this.uniforms.uPlaneCenter.value = new THREE.Vector2(0, 0);
+    this.uniforms.uScaleToViewSize.value = new THREE.Vector2(1, 1);
+    this.uniforms.uClosestCorner.value = 0;
+    this.uniforms.uMouse.value = new THREE.Vector2(0, 0);
+
+    this.uniforms.uImage.value = null;
+    this.uniforms.uImageRes.value = new THREE.Vector2(1, 1);
+    this.uniforms.uImageLarge.value = null;
+    this.uniforms.uImageLargeRes.value = new THREE.Vector2(1, 1);
+
+    const mesh = this.mesh;
+    mesh.scale.x = 0.00001;
+    mesh.scale.y = 0.00001;
+    mesh.position.x = 0;
+    mesh.position.y = 0;
   }
   /**
     An image 
@@ -211,6 +231,8 @@ class GridToFullscreenEffect {
     this.mesh = new THREE.Mesh(geometry, material);
     this.scene.add(this.mesh);
 
+    window.addEventListener("resize", this.onResize);
+
     for (let i = 0; i < this.itemsWrapper.children.length; i++) {
       const image = this.itemsWrapper.children[i].children[0];
       image.addEventListener("mousedown", this.createOnMouseDown(i));
@@ -222,9 +244,7 @@ class GridToFullscreenEffect {
    */
   createOnMouseDown(itemIndex) {
     return ev => {
-      // (rect.width * viewSize.width) / window.innerWidth;
-      const rect = ev.target.getBoundingClientRect();
-      this.toFullscreen(itemIndex, rect, ev);
+      this.toFullscreen(itemIndex, ev);
     };
   }
   /*
@@ -250,6 +270,8 @@ class GridToFullscreenEffect {
           this.isFullscreen = false;
           this.itemsWrapper.style.zIndex = 1;
           this.container.style.zIndex = 0;
+          this.resetUniforms();
+          this.render();
           if (this.options.onToGridFinish)
             this.options.onToGridFinish({
               index: -1,
@@ -260,12 +282,10 @@ class GridToFullscreenEffect {
       }
     );
   }
-  toFullscreen(itemIndex, rect, ev) {
-    if (this.isFullscreen || this.isAnimating) return;
-
-    this.isAnimating = true;
-    this.currentImageIndex = itemIndex;
-
+  recalculateUniforms(ev) {
+    const rect = this.itemsWrapper.children[
+      this.currentImageIndex
+    ].children[0].getBoundingClientRect();
     const mouseNormalized = {
       x: (ev.clientX - rect.left) / rect.width,
       // Allways invert Y coord
@@ -318,6 +338,14 @@ class GridToFullscreenEffect {
     this.uniforms.uScaleToViewSize.value.x = viewSize.width / widthViewUnit - 1;
     this.uniforms.uScaleToViewSize.value.y =
       viewSize.height / heightViewUnit - 1;
+  }
+  toFullscreen(itemIndex, ev) {
+    if (this.isFullscreen || this.isAnimating) return;
+
+    this.isAnimating = true;
+    this.currentImageIndex = itemIndex;
+
+    this.recalculateUniforms(ev);
 
     if (this.textures[itemIndex]) {
       const textureSet = this.textures[itemIndex];
@@ -380,6 +408,21 @@ class GridToFullscreenEffect {
   */
   render() {
     this.renderer.render(this.scene, this.camera);
+  }
+  /**
+    Resize Event Listener.
+    Updates anything that uses the window's size.
+    @param {Event} ev resize event 
+   */
+  onResize(ev) {
+    this.camera.aspect = window.innerWidth / window.innerHeight;
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
+
+    if (this.currentImageIndex > -1) {
+      this.recalculateUniforms(ev);
+      this.render();
+    }
   }
 }
 
