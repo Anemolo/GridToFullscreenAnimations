@@ -283,6 +283,8 @@ class GridToFullscreenEffect {
     );
   }
   recalculateUniforms(ev) {
+    if (this.currentImageIndex === -1) return;
+
     const rect = this.itemsWrapper.children[
       this.currentImageIndex
     ].children[0].getBoundingClientRect();

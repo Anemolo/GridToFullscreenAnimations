@@ -17,5 +17,9 @@ function createDemoEffect(options) {
     }
   );
 
+  window.addEventListener("scroll", ev => {
+    transitionEffect.recalculateUniforms(ev);
+  });
+
   return transitionEffect;
 }
