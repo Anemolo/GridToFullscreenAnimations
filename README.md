@@ -1,16 +1,16 @@
 # Grid to Fullscreen Animations with Three.js
 
-Demos for the tutorial on "Creating Grid to Fullscreen Animations in Three.js" by Daniel Velasquez.
+Demos for the tutorial "Creating Grid to Fullscreen Animations with Three.js" by Daniel Velasquez.
 
 ![Image Title](link)
 
-[Article on Codrops](https://tympanus.net/codrops/?p=)
+[Article on Codrops](https://tympanus.net/codrops/?p=40491)
 
-[Demo](http://tympanus.net/Development//)
+[Demo](http://tympanus.net/Tutorials/GridToFullscreenAnimations/)
 
 ## Options
 
-Options used modify the effect and create variations.
+Options used to modify the effect and create variations:
 
 ```javascript
 const options = {
@@ -56,8 +56,9 @@ const options = {
 ## Credits
 
 - [three.js](https://threejs.org/) by Ricardo Cabello
-- Images from [Unsplash.com](https://unsplash.com/)
 - [GSAP](https://greensock.com/) by Jack Doyle
+- [imagesLoaded](https://imagesloaded.desandro.com/) by Dave DeSandro
+- Images from [Unsplash.com](https://unsplash.com/)
 
 ## License
 

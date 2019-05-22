@@ -17,7 +17,7 @@ body {
 	--color-title: #a96b5a;
 	color: var(--color-text);
 	background-color: var(--color-bg);
-	font-family: ff-basic-gothic-pro, Futura, sans-serif;
+	font-family: ff-basic-gothic-pro, Futura, Arial, sans-serif;
 	font-weight: 500;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
