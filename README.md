@@ -8,6 +8,52 @@ A Demo of the tutorial on "Creating Grid to Fullscreen Animations in Three.js" b
 
 [Demo](http://tympanus.net/Development//)
 
+## Options
+
+Options used modify the effect and create variations.
+
+```
+    const options = {
+        // Timing of the effect and vertice timing calculation
+        timing: {
+            // How to calculate the timing of a vertice
+            type: 'sameEnd', // "sameEnd" | "sections"
+            sections: 1, // Number
+            latestStart: 0.5, // Normalized number
+            // Duration of the effect in seconds
+            duration: 1 // Number of seconds
+        },
+        // Plane transformations
+        transformation: {
+            type: "none", // "flipX" | "flipY" | etc...
+            props: {} // transformation type especific props
+        },
+        // The plane activation used with timing
+        activation: {
+            type: "topLeft", // "top" | "left" | "topleft" | etc...
+        },
+        // General seed for some effects
+        seed: 0, // Number
+        // Easings for the effects tweens
+        easings: {
+            toFullscreen: Power0.easeNone, // gsap EasePack easing
+            toGrid: Power0.easeNone, // gsap EasePack easing
+        },
+        // Beizer controls for the flip interpolation
+        flipBeizerControls: {
+            c0: {
+                x: 0.5, // Normalized Number
+                y: 0.5, // Normalized Number
+            },
+            c1: {
+                x: 0.5, // Normalized Number
+                y: 0.5, // Normalized Number
+            }
+        }
+    }
+
+```
+
 ## Credits
 
 - [three.js](https://threejs.org/) by Ricardo Cabello
