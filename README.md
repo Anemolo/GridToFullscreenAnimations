@@ -1,6 +1,6 @@
 # Grid to Fullscreen Animations with Three.js
 
-A Demo of the tutorial on "Creating Grid to Fullscreen Animations in Three.js" by Daniel Velasquez.
+Demos for the tutorial on "Creating Grid to Fullscreen Animations in Three.js" by Daniel Velasquez.
 
 ![Image Title](link)
 

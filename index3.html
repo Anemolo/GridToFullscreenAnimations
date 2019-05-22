@@ -1,147 +1,115 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Grid to Fullscreen Animations | Codrops</title>
-    <meta
-      name="description"
-      content="A set of thumbnail to fullscreen animations for image grids powered by Three.js"
-    />
-    <meta
-      name="keywords"
-      content="image grid, animation, fullscreen, webgl, three.js, web design"
-    />
+    <meta name="description" content="A set of thumbnail to fullscreen animations for image grids powered by Three.js" />
+    <meta name="keywords" content="image grid, animation, fullscreen, webgl, three.js, web design" />
     <meta name="author" content="Codrops" />
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="stylesheet" href="https://use.typekit.net/ujk6ksk.css" />
     <link rel="stylesheet" type="text/css" href="css/base.css" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
     <script>
-      document.documentElement.className = "js";
-      var supportsCssVars = function() {
+    document.documentElement.className = "js";
+    var supportsCssVars = function() {
         var e,
-          t = document.createElement("style");
+            t = document.createElement("style");
         return (
-          (t.innerHTML = "root: { --tmp-var: bold; }"),
-          document.head.appendChild(t),
-          (e = !!(
-            window.CSS &&
-            window.CSS.supports &&
-            window.CSS.supports("font-weight", "var(--tmp-var)")
-          )),
-          t.parentNode.removeChild(t),
-          e
+            (t.innerHTML = "root: { --tmp-var: bold; }"),
+            document.head.appendChild(t),
+            (e = !!(
+                window.CSS &&
+                window.CSS.supports &&
+                window.CSS.supports("font-weight", "var(--tmp-var)")
+            )),
+            t.parentNode.removeChild(t),
+            e
         );
-      };
-      supportsCssVars() ||
+    };
+    supportsCssVars() ||
         alert(
-          "Please view this demo in a modern browser that supports CSS Variables."
+            "Please view this demo in a modern browser that supports CSS Variables."
         );
     </script>
     <!--script src="//tympanus.net/codrops/adpacks/analytics.js"></script-->
-  </head>
-  <body class="loading">
+</head>
+
+<body class="loading demo-3">
     <main>
-      <div class="frame">
-        <div class="frame__title-wrap">
-          <h1 class="frame__title">Grid to Fullscreen Animations</h1>
-          <div class="frame__links">
-            <a href="">Previous Demo</a>
-            <a href="">Article</a>
-            <a href="">GitHub</a>
-          </div>
+        <div class="frame">
+            <div class="frame__title-wrap">
+                <h1 class="frame__title">Grid to Fullscreen Animations</h1>
+                <div class="frame__links">
+                    <a href="https://tympanus.net/Development/AnimatedImageColumns/">Previous demo</a>
+                    <a href="https://tympanus.net/codrops/?p=40491">Article</a>
+                    <a href="https://github.com/Anemolo/GridToFullscreenAnimations">GitHub</a>
+                </div>
+            </div>
+            <div class="frame__demos">
+                <span class="frame__demos-title">examples:</span>
+                <a href="index.html" class="frame__demo">01</a>
+                <a href="index2.html" class="frame__demo">02</a>
+                <a href="index3.html" class="frame__demo frame__demo--current">03</a>
+                <a href="index4.html" class="frame__demo">04</a>
+                <a href="index5.html" class="frame__demo">05</a>
+                <a href="index6.html" class="frame__demo">06</a>
+            </div>
         </div>
-        <div class="frame__demos">
-          <span class="frame__demos-title">examples:</span>
-          <a href="index.html" class="frame__demo">01</a>
-          <a href="index2.html" class="frame__demo">02</a>
-          <a href="index3.html" class="frame__demo frame__demo--current">03</a>
-          <a href="index4.html" class="frame__demo">04</a>
-          <a href="index5.html" class="frame__demo">05</a>
-          <a href="index6.html" class="frame__demo">06</a>
+        <!-- /frame -->
+        <div class="deco">
+            <div class="deco__text">Connect 2020</div>
+            <div class="deco__text">Connect 2020</div>
+            <div class="deco__text">Connect 2020</div>
+            <div class="deco__text">Connect 2020</div>
+            <div class="deco__text">Connect 2020</div>
         </div>
-      </div>
-      <!-- /frame -->
-      <div class="deco">
-        <div class="deco__text">Interface 2019</div>
-        <div class="deco__text">Interface 2019</div>
-        <div class="deco__text">Interface 2019</div>
-        <div class="deco__text">Interface 2019</div>
-        <div class="deco__text">Interface 2019</div>
-      </div>
-      <div id="app"></div>
-      <div class="grid" id="itemsWrapper">
-        <figure class="grid__item">
-          <img
-            class="grid__item-img"
-            src="img/thumbs/1.jpg"
-            alt="A picture of Montparnasse in Paris"
-          />
-          <img
-            class="grid__item-img grid__item-img--large"
-            src="img/large/1.jpg"
-          />
-          <figcaption class="grid__item-caption">
-            <h2 class="grid__item-title">Paris</h2>
-            <p class="grid__item-text">
-              If you are lucky enough to have lived in Paris as a young man,
-              then wherever you go for the rest of your life it stays with you,
-              for Paris is a moveable feast.
-            </p>
-          </figcaption>
-        </figure>
-        <figure class="grid__item">
-          <img
-            class="grid__item-img"
-            src="img/thumbs/2.jpg"
-            alt="A picture of a street in Barcelona"
-          />
-          <img
-            class="grid__item-img grid__item-img--large"
-            src="img/large/2.jpg"
-          />
-          <figcaption class="grid__item-caption">
-            <h2 class="grid__item-title">Barcelona</h2>
-            <p class="grid__item-text">
-              We crossed spacious streets, with building resembling palaces, in
-              La Rambla promenade; the shops were well illuminated and there was
-              movement and life.
-            </p>
-          </figcaption>
-        </figure>
-        <figure class="grid__item">
-          <img
-            class="grid__item-img"
-            src="img/thumbs/3.jpg"
-            alt="A picture of a street in Rome"
-          />
-          <img
-            class="grid__item-img grid__item-img--large"
-            src="img/large/3.jpg"
-          />
-          <figcaption class="grid__item-caption">
-            <h2 class="grid__item-title">Rome</h2>
-            <p class="grid__item-text">
-              And that is… how they are. So terribly physically all over one
-              another. They pour themselves one over the other like so much
-              melted butter over parsnips.
-            </p>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="fullview">
-          <div class="fullview__item">
-              <h2 class="fullview__item-title">Paris</h2>
-          </div>
-          <div class="fullview__item">
-              <h2 class="fullview__item-title">Barcelona</h2>
-          </div>
-          <div class="fullview__item">
-              <h2 class="fullview__item-title">Rome</h2>
-          </div>
-           <button class="fullview__close" aria-label="Close preview"><svg aria-hidden="true" width="32" height="50px" viewBox="0 0 43 28"><path d="M15.379 2.236L13.965.822.787 14l13.178 13.178 1.414-1.414-10.703-10.8h37.573v-1.928l-37.573-.097z"></svg></button>
-      </div> 
+        <div id="app"></div>
+        <div class="grid" id="itemsWrapper">
+            <figure class="grid__item">
+                <img class="grid__item-img" src="img/7.jpg" alt="Some image" />
+                <img class="grid__item-img grid__item-img--large" src="img/7_large.jpg" />
+                <figcaption class="grid__item-caption">
+                    <h2 class="grid__item-title">Bangkok</h2>
+                    <p class="grid__item-text">
+                        Let's get crazy. Maybe we got a few little happy bushes here, just covered with snow. We'll throw some happy little limbs on this tree.
+                    </p>
+                </figcaption>
+            </figure>
+            <figure class="grid__item">
+                <img class="grid__item-img" src="img/8.jpg" alt="Some image" />
+                <img class="grid__item-img grid__item-img--large" src="img/8_large.jpg" />
+                <figcaption class="grid__item-caption">
+                    <h2 class="grid__item-title">Seoul</h2>
+                    <p class="grid__item-text">
+                        Just think about these things in your mind - then bring them into your world. Happy painting, God bless. A little happy sunlight shining through there.
+                    </p>
+                </figcaption>
+            </figure>
+            <figure class="grid__item">
+                <img class="grid__item-img" src="img/9.jpg" alt="Some image" />
+                <img class="grid__item-img grid__item-img--large" src="img/9_large.jpg" />
+                <figcaption class="grid__item-caption">
+                    <h2 class="grid__item-title">Tokyo</h2>
+                    <p class="grid__item-text">
+                        This is an example of what you can do with just a few things, a little imagination and a happy dream in your heart. 
+                    </p>
+                </figcaption>
+            </figure>
+        </div>
+        <div class="fullview">
+            <div class="fullview__item">
+                <h2 class="fullview__item-title">Bangkok</h2>
+            </div>
+            <div class="fullview__item">
+                <h2 class="fullview__item-title">Seoul</h2>
+            </div>
+            <div class="fullview__item">
+                <h2 class="fullview__item-title">Tokyo</h2>
+            </div>
+            <button class="fullview__close" aria-label="Close preview"><svg aria-hidden="true" width="24" height="22px" viewBox="0 0 24 22"><path d="M11 9.586L20.192.393l1.415 1.415L12.414 11l9.193 9.192-1.415 1.415L11 12.414l-9.192 9.193-1.415-1.415L9.586 11 .393 1.808 1.808.393 11 9.586z" /></svg></button>
+        </div>
     </main>
     <script src="js/imagesloaded.pkgd.min.js"></script>
     <script src="js/three.min.js"></script>
@@ -151,102 +119,102 @@
     <script src="js/GridToFullscreenEffect.js"></script>
     <script src="js/basicDemo.js"></script>
     <script>
-      let currentIndex;
-      const itemsWrapper = document.getElementById("itemsWrapper");
-      const thumbs = [...itemsWrapper.querySelectorAll("img.grid__item-img:not(.grid__item-img--large)")];
-      const fullviewItems = [...document.querySelectorAll(".fullview__item")];
-      const backToGridCtrl = document.querySelector(".fullview__close");
-      const transitionEffectDuration = 1.2;
+    let currentIndex;
+    const itemsWrapper = document.getElementById("itemsWrapper");
+    const thumbs = [...itemsWrapper.querySelectorAll("img.grid__item-img:not(.grid__item-img--large)")];
+    const fullviewItems = [...document.querySelectorAll(".fullview__item")];
+    const backToGridCtrl = document.querySelector(".fullview__close");
+    const transitionEffectDuration = 1.2;
 
-      const transitionEffect = createDemoEffect({
+    const transitionEffect = createDemoEffect({
         activation: { type: "top" },
         timing: {
-          type: "sections",
-          sections: 20,
-          duration: transitionEffectDuration
+            type: "sections",
+            sections: 20,
+            duration: transitionEffectDuration
         },
         onToFullscreenStart: ({ index }) => {
-          currentIndex = index;
-					thumbs[currentIndex].style.opacity = 0;
-          toggleFullview();
+            currentIndex = index;
+            thumbs[currentIndex].style.opacity = 0;
+            toggleFullview();
         },
         onToGridFinish: ({ index, lastIndex }) => {
-          thumbs[lastIndex].style.opacity = 1;
-					fullviewItems[currentIndex].classList.remove("fullview__item--current");
+            thumbs[lastIndex].style.opacity = 1;
+            fullviewItems[currentIndex].classList.remove("fullview__item--current");
         },
         easings: {
-          toFullscreen: Quint.easeInOut,
-          toGrid: Quint.easeInOut
+            toFullscreen: Quint.easeInOut,
+            toGrid: Quint.easeInOut
         }
-      });
-      transitionEffect.init();
+    });
+    transitionEffect.init();
 
-      const toggleFullview = () => {
-        if ( transitionEffect.isFullscreen ) {
-          TweenLite.to(fullviewItems[currentIndex].querySelector(".fullview__item-title"), 0.5, {
-            ease: Expo.easeOut,
-            opacity: 0,
-            x: "5%"
-          });
-          TweenLite.to(backToGridCtrl, 0.5, {
-            ease: Expo.easeOut,
-            opacity: 0,
-            x: "100%"
-          });
-          
-          transitionEffect.toGrid();
+    const toggleFullview = () => {
+        if (transitionEffect.isFullscreen) {
+            TweenLite.to(fullviewItems[currentIndex].querySelector(".fullview__item-title"), 0.5, {
+                ease: Expo.easeOut,
+                opacity: 0,
+                x: "5%"
+            });
+            TweenLite.to(backToGridCtrl, 0.5, {
+                ease: Expo.easeOut,
+                opacity: 0,
+                x: "100%"
+            });
+
+            transitionEffect.toGrid();
+        } else {
+            fullviewItems[currentIndex].classList.add("fullview__item--current");
+
+            TweenLite.to(fullviewItems[currentIndex].querySelector(".fullview__item-title"), 1, {
+                ease: Expo.easeOut,
+                startAt: { x: "5%" },
+                opacity: 1,
+                x: "0%",
+                delay: transitionEffectDuration * 0.7
+            });
+            TweenLite.to(backToGridCtrl, 1, {
+                ease: Expo.easeOut,
+                startAt: { x: "100%" },
+                opacity: 1,
+                x: "0%",
+                delay: transitionEffectDuration * 0.6
+            });
         }
-        else {
-          fullviewItems[currentIndex].classList.add("fullview__item--current");
+    };
 
-          TweenLite.to(fullviewItems[currentIndex].querySelector(".fullview__item-title"), 1, {
-            ease: Expo.easeOut,
-            startAt: {x: "5%"},
-            opacity: 1,
-            x: "0%",
-            delay: transitionEffectDuration*0.7
-          });
-          TweenLite.to(backToGridCtrl, 1, {
-            ease: Expo.easeOut,
-            startAt: {x: "100%"},
-            opacity: 1,
-            x: "0%",
-            delay: transitionEffectDuration*0.6
-          });
-        }
-      };
-
-      backToGridCtrl.addEventListener("click", () => {
-        if ( transitionEffect.isAnimating ) {
-          return;
+    backToGridCtrl.addEventListener("click", () => {
+        if (transitionEffect.isAnimating) {
+            return;
         }
         toggleFullview();
-      });
+    });
 
-      // Preload all the images in the page
-      imagesLoaded(document.querySelectorAll("img"), instance => {
+    // Preload all the images in the page
+    imagesLoaded(document.querySelectorAll("img"), instance => {
         //https://www.techrepublic.com/article/preloading-and-the-javascript-image-object/
         document.body.classList.remove("loading");
 
         // Make Images sets for the transition effect
         let images = [];
         for (var i = 0, imageSet = {}; i < instance.elements.length; i++) {
-          let image = {
-            element: instance.elements[i],
-            image: instance.images[i].isLoaded ? instance.images[i].img : null
-          };
-          if (i % 2 === 0) {
-            imageSet = {};
-            imageSet.small = image;
-          }
+            let image = {
+                element: instance.elements[i],
+                image: instance.images[i].isLoaded ? instance.images[i].img : null
+            };
+            if (i % 2 === 0) {
+                imageSet = {};
+                imageSet.small = image;
+            }
 
-          if (i % 2 === 1) {
-            imageSet.large = image;
-            images.push(imageSet);
-          }
+            if (i % 2 === 1) {
+                imageSet.large = image;
+                images.push(imageSet);
+            }
         }
         transitionEffect.createTextures(images);
-      });
+    });
     </script>
-  </body>
+</body>
+
 </html>
