@@ -2,7 +2,7 @@
 
 Demos for the tutorial "Creating Grid to Fullscreen Animations with Three.js" by Daniel Velasquez.
 
-![Image Title](link)
+![Grid to Fullscreen Animations](https://tympanus.net/codrops/wp-content/uploads/2019/05/GridToFullscreen_featured.jpg)
 
 [Article on Codrops](https://tympanus.net/codrops/?p=40491)
 
