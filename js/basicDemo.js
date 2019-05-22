@@ -9,6 +9,7 @@ function createDemoEffect(options) {
     document.getElementById("app"),
     document.getElementById("itemsWrapper"),
     {
+      scrollContainer: window,
       onToFullscreenStart: ({ index }) => {},
       onToFullscreenFinish: ({ index }) => {},
       onToGridStart: ({ index }) => {},
@@ -16,10 +17,6 @@ function createDemoEffect(options) {
       ...options
     }
   );
-
-  window.addEventListener("scroll", ev => {
-    transitionEffect.recalculateUniforms(ev);
-  });
 
   return transitionEffect;
 }

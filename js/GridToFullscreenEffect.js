@@ -21,6 +21,8 @@ class GridToFullscreenEffect {
     this.scene = null;
     this.renderer = null;
 
+    options.scrollContainer = options.scrollContainer || null;
+
     options.timing = options.timing || {};
     options.timing.type = options.timing.type || "sameEnd";
     options.timing.sections = options.timing.sections || 1;
@@ -232,6 +234,11 @@ class GridToFullscreenEffect {
     this.scene.add(this.mesh);
 
     window.addEventListener("resize", this.onResize);
+    if (this.options.scrollContainer) {
+      this.options.scrollContainer.addEventListener("scroll", ev => {
+        this.recalculateUniforms(ev);
+      });
+    }
 
     for (let i = 0; i < this.itemsWrapper.children.length; i++) {
       const image = this.itemsWrapper.children[i].children[0];
