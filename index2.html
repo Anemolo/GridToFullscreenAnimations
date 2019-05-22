@@ -134,7 +134,7 @@
 			TweenLite.to(fullviewItems[currentIndex].querySelector(".fullview__item-title"), 0.5, {
 				ease: Expo.easeOut,
 				opacity: 0,
-				x: "5%"
+				x: "-5%"
 			});
 			TweenLite.to(backToGridCtrl, 0.5, {
 				ease: Expo.easeOut,
@@ -148,10 +148,10 @@
 
 			TweenLite.to(fullviewItems[currentIndex].querySelector(".fullview__item-title"), 1, {
 				ease: Expo.easeOut,
-				startAt: { x: "5%" },
+				startAt: { x: "-5%" },
 				opacity: 1,
 				x: "0%",
-				delay: transitionEffectDuration * 0.6
+				delay: transitionEffectDuration * 0.5
 			});
 			TweenLite.to(backToGridCtrl, 1, {
 				ease: Expo.easeOut,

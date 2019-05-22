@@ -109,7 +109,7 @@
 	const thumbs = [...itemsWrapper.querySelectorAll("img.grid__item-img:not(.grid__item-img--large)")];
 	const fullviewItems = [...document.querySelectorAll(".fullview__item")];
 	const backToGridCtrl = document.querySelector(".fullview__close");
-	const transitionEffectDuration = 1.3;
+	const transitionEffectDuration = 1.6;
 
 	const transitionEffect = createDemoEffect({
 		timing: {
@@ -140,7 +140,7 @@
 		},
 		seed: 800,
 		easings: {
-			toFullscreen: Quint.easeOut,
+			toFullscreen: Cubic.easeOut,
 			toGrid: Power3.easeInOut
 		}
 	});

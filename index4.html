@@ -103,7 +103,7 @@
 	const thumbs = [...itemsWrapper.querySelectorAll("img.grid__item-img:not(.grid__item-img--large)")];
 	const fullviewItems = [...document.querySelectorAll(".fullview__item")];
 	const backToGridCtrl = document.querySelector(".fullview__close");
-	const transitionEffectDuration = 1.3;
+	const transitionEffectDuration = 1.2;
 
 	const transitionEffect = createDemoEffect({
 		activation: { type: "mouse" },
@@ -133,7 +133,7 @@
 		seed: 800,
 		easings: {
 			toFullscreen: Power1.easeOut,
-			toGrid: Power1.easeOut
+			toGrid: Power1.easeInOut
 		}
 	});
 	transitionEffect.init();
@@ -148,7 +148,7 @@
 			TweenLite.to(backToGridCtrl, 0.2, {
 				ease: Quad.easeOut,
 				opacity: 0,
-				x: "100%"
+				scale: 0
 			});
 
 			transitionEffect.toGrid();
@@ -160,13 +160,13 @@
 				startAt: { x: "5%" },
 				opacity: 1,
 				x: "0%",
-				delay: transitionEffectDuration * 0.7
+				delay: transitionEffectDuration * 0.6
 			});
 			TweenLite.to(backToGridCtrl, 1, {
 				ease: Expo.easeOut,
-				startAt: { x: "100%" },
+				startAt: { scale: 0 },
 				opacity: 1,
-				x: "0%",
+				scale: 1,
 				delay: transitionEffectDuration * 0.6
 			});
 		}

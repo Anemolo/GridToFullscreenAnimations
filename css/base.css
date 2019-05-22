@@ -14,7 +14,7 @@ body {
 	--color-link-hover: #fff;
 	--color-grid-text: #444444;
 	--color-deco: #191919;
-	--color-title: #a96b5a;
+	--color-title: #fff;
 	color: var(--color-text);
 	background-color: var(--color-bg);
 	font-family: ff-basic-gothic-pro, Futura, Arial, sans-serif;
@@ -24,15 +24,40 @@ body {
 	overflow-y: overlay;
 }
 
-.demo-3 {
-    --color-text: #fff;
-    --color-bg: #1a2aa1;
-    --color-link: #5568f9;
-    --color-link-hover: #fff;
-    --color-grid-text: #9ba4e8;
-    --color-deco: #19257c;
-    --color-title: #fff;
+.demo-2 {
+	--color-text: #d7563a;
+	--color-bg: #f1be9c;
+    --color-link: #1a2322;
+    --color-grid-text: #1a2322;
+    --color-deco: #eab18c;
+}
 
+.demo-3 {
+	--color-text: #e24e86;
+    --color-bg: #242a52;
+    --color-link: #5568f9;
+    --color-grid-text: #9ba4e8;
+    --color-deco: #292f5a;
+}
+
+.demo-4 {
+	--color-text: #990029;
+}
+
+.demo-5 {
+	--color-text: #faba00;
+    --color-bg: #000000;
+    --color-link: #444444;
+    --color-deco: #101010;
+}
+
+.demo-6 {
+	--color-text: #fe952c;
+    --color-bg: #2701ad;
+    --color-link: #ffffff;
+    --color-link-hover: #08afef;
+    --color-grid-text: #08afef;
+    --color-deco: #320db9;
 }
 
 #app {
