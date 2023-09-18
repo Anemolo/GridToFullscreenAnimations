@@ -2,7 +2,7 @@
  * A grid items to fullscreen transition
  * @module GridToFullscreenEffect
  * @author Daniel Velasquez
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 class GridToFullscreenEffect {
@@ -136,12 +136,12 @@ class GridToFullscreenEffect {
       largeTexture.generateMipmaps = false;
       largeTexture.wrapS = largeTexture.wrapT = THREE.ClampToEdgeWrapping;
       largeTexture.minFilter = THREE.LinearFilter;
-      largeTexture.needsUpdate = true;
+      //largeTexture.needsUpdate = true;
       const smallTexture = new THREE.Texture(imageSet.small.image);
       smallTexture.generateMipmaps = false;
       smallTexture.wrapS = smallTexture.wrapT = THREE.ClampToEdgeWrapping;
       smallTexture.minFilter = THREE.LinearFilter;
-      smallTexture.needsUpdate = true;
+      //smallTexture.needsUpdate = true;
       const textureSet = {
         large: {
           element: imageSet.large.element,
@@ -207,7 +207,7 @@ class GridToFullscreenEffect {
     );
 
     const segments = 128;
-    var geometry = new THREE.PlaneBufferGeometry(1, 1, segments, segments);
+    var geometry = new THREE.PlaneGeometry(1, 1, segments, segments);
     function isFunction(functionToCheck) {
       return (
         functionToCheck &&
@@ -263,10 +263,10 @@ class GridToFullscreenEffect {
     this.isAnimating = true;
     if (this.options.onToGridStart)
       this.options.onToGridStart({ index: this.currentImageIndex });
-    this.tween = TweenLite.to(
+    this.tween = gsap.to(
       this.uniforms.uProgress,
-      this.options.timing.duration,
       {
+        duration: this.options.timing.duration,
         value: 0,
         ease: this.options.easings.toGrid,
         onUpdate: () => {
@@ -375,10 +375,10 @@ class GridToFullscreenEffect {
     if (this.options.onToFullscreenStart)
       this.options.onToFullscreenStart({ index: this.currentImageIndex });
 
-    this.tween = TweenLite.to(
+    this.tween = gsap.to(
       this.uniforms.uProgress,
-      this.options.timing.duration,
       {
+        duration: this.options.timing.duration,
         value: 1,
         ease: this.options.easings.toFullscreen,
         onUpdate: () => {
