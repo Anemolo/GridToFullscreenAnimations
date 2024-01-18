@@ -130,14 +130,14 @@ class GridToFullscreenEffect {
     const textures = [];
     for (let i = 0; i < images.length; i++) {
       const imageSet = images[i];
-	  const loader = new THREE.TextureLoader();
-	  const largeTexture = loader.load(imageSet.large.image.src);
+      const loader = new THREE.TextureLoader();
+      const largeTexture = loader.load(imageSet.large.image.src);
 
       // So It doesnt get resized to the power of 2
       largeTexture.generateMipmaps = false;
       largeTexture.wrapS = largeTexture.wrapT = THREE.ClampToEdgeWrapping;
       largeTexture.minFilter = THREE.LinearFilter;
-	  const smallTexture = loader.load(imageSet.small.image.src);
+      const smallTexture = loader.load(imageSet.small.image.src);
       smallTexture.generateMipmaps = false;
       smallTexture.wrapS = smallTexture.wrapT = THREE.ClampToEdgeWrapping;
       smallTexture.minFilter = THREE.LinearFilter;
